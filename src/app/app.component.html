@@ -1,0 +1,99 @@
+<div class="banner" [style.background-image]="'url(/assets/' + Banner2 + ')'">
+    <img class="logo" [src]="Logo">
+    <h1>Almost before we knew it, we had left the ground.
+    </h1>
+    <div class="btns btn-family">
+        <button pButton (click)="Navigate(formulario)" type="button" label="Registrate" class="p-button-raised p-button-primary"></button>
+        <button pButton type="button" label="Refiere" class="p-button-raised p-button-success "></button>
+    </div>
+</div>
+<div #tabla class="tabla">
+    <p-table [value]="personas">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Nombre</th>
+                <th>Referidos</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-persona>
+            <tr>
+                <td>{{persona.nombre}}</td>
+                <td>{{persona.referidos}}</td>
+
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+<div class="video-vimeo">
+    <div class="p-grid p-fluid">
+        <div class="p-col-12 p-md-6 margin-height">
+            <iframe src="https://player.vimeo.com/video/38953420" height="380" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+        <div class="p-col-12 p-md-6 margin-height">
+            <h2>
+                Lorem ipsum dolor
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis sequi, delectus beatae, tenetur, pariatur esse reiciendis adipisci sapiente ad hic aut commodi qui quos id sed voluptate! Adipisci, voluptates molestiae!
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis sequi, delectus sit amet consectetur adipisicing elit. Facilis sequi, delectus beatae, tenetur, pariatur esse reiciendis adipisci sapiente ad hic aut commodi qui quos id sed voluptate! Adipisci,
+                Facilis sequi, delectus sit amet consectetur adipisicing elit. Facilis sequi, delectus beatae, tenetur, pariatur esse reiciendis adipisci sapiente ad hic aut commodi qui voluptates molestiae!
+            </p>
+            <h3>El ganador es: {{ganador?.nombre}} con <span style="font-style: bold;">{{ganador?.referidos}} referidos.</span></h3>
+        </div>
+    </div>
+</div>
+<div #formulario class="form">
+    <div class="header-form">
+        <h2>{{tituloFormulario}}</h2>
+    </div>
+    <form novalidate [formGroup]="personaForm" novalidate (ngSubmit)="onSubmit()">
+        <div class="p-grid p-fluid">
+            <div class="p-col-12 p-md-4 margin-height">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                    <input type="text" pInputText formControlName="nombre" placeholder="Nombre">
+                </div>
+            </div>
+
+            <div class="p-col-12 p-md-4 margin-height">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-folder" ></i></span>
+                    <input type="text" pInputText formControlName="area" placeholder="Area">
+
+                </div>
+            </div>
+            <div class="p-col-12 p-md-4 margin-height">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-briefcase" ></i></span>
+                    <input type="text" pInputText formControlName="cargo" placeholder="Cargo">
+
+                </div>
+            </div>
+            <div class="p-col-12 p-md-4 margin-height">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-phone" ></i></span>
+                    <input type="text" pInputText formControlName="celular" placeholder="Celular">
+
+                </div>
+            </div>
+            <div class="p-col-12 p-md-4 margin-height">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-comments" ></i></span>
+                    <input type="text" pInputText formControlName="email" placeholder="Correo">
+
+                </div>
+            </div>
+        </div>
+        <div class="p-grid p-fluid center-flex">
+            <div class="p-col-5 p-md-5 margin-height">
+                <button pButton type="submit" [disabled]="personaForm.invalid" label="Registrate" class="p-button-raised p-button-primary"></button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="spinner" [ngClass]="{'showLoader': showLoader === true}">
+    <p-progressSpinner [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" strokeWidth="8" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+</div>
+<router-outlet></router-outlet>
